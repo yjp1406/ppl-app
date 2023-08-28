@@ -64,8 +64,7 @@ const getAssignmentById = async (req, res) => {
     const user = req.user;
 
     const assignments = await Assignment.getAssignmentById(id);
-
-    if (assignments.created_by === user.id || user.role === "student") {
+    if (assignments[0].created_by === user.id || user.role === "student") {
       res
         .status(200)
         .send({ success: true, message: "Assignments", data: assignments });
